@@ -21,18 +21,19 @@ CREATE TYPE tset_ref_Parcelle AS TABLE OF ref TParcelle
 /
 CREATE TYPE tset_ref_Semis AS TABLE OF ref TSemis
 /
-CREATE TYPE tset_ref_Mission_Drone TABLE OF ref TMission_Drone
+CREATE TYPE tset_ref_Mission_Drone AS TABLE OF ref TMission_Drone
 /
 CREATE TYPE tset_ref_Detection_Maladie AS TABLE OF ref TDetection_Maladie
 /
-CREATE OR Replace TYPE AS OBJECT(
-    id_exploitation                                    CHAR(6)
-    nom_exploitation                                   VARCHAR2(50)
-    superficie_exploitation                            NUMBER(38)
-    region                                             VARCHAR2(50)
-    nbr_parcelles                                      NUMBER(38)
-    Exploitation_Parcelle                              tset_ref_Parcelle
-)
+CREATE OR Replace TYPE TExploitation AS OBJECT(
+    id_exploitation         CHAR(6),
+    nom_exploitation        VARCHAR2(50),
+    superficie_exploitation NUMBER(38),
+    region                  VARCHAR2(50),
+    nbr_parcelles           NUMBER(38),
+    Exploitation_Parcelle   tset_ref_Parcelle
+);
+/
 CREATE OR Replace TYPE TParcelle AS OBJECT (
     id_parcelle             CHAR(4),
     nom_parcelle            VARCHAR(50),
