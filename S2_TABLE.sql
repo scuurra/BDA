@@ -38,16 +38,7 @@ CREATE TABLE Drone OF TDrone ( CONSTRAINT pk_id_drone PRIMARY KEY(id_drone),
 CREATE TABLE Mission_Drone OF TMission_Drone ( CONSTRAINT pk_id_mission PRIMARY KEY(id_mission),
                                                CONSTRAINT ck_type_mission CHECK (type_mission IN ('surveillance','traitement','cartographie','analyse thermique')),
                                                CONSTRAINT fk_mission_parcelle FOREIGN KEY(mission_parcelle) REFERENCES Parcelle,
-                                               CONSTRAINT fk_mission_maladie  FOREIGN KEY(mission_drone)    REFERENCES Maladie,
+                                               CONSTRAINT fk_mission_maladie  FOREIGN KEY(mission_maladie)    REFERENCES Maladie,
                                                CONSTRAINT fk_mission_campagne FOREIGN KEY(mission_campagne) REFERENCES Campagne,
                                                CONSTRAINT fk_mission_drone    FOREIGN KEY(mission_drone)    REFERENCES Drone)
-;                                   
-/*CONSTRAINT fk_NUMCLIENT FOREIGN KEY(NUMCLIENT) REFERENCES CLIENTS,
-    CONSTRAINT fk_NUMMODELE FOREIGN KEY(NUMMODELE) REFERENCES MODELES)
-    NESTED TABLE TABLE_TINTERVENTIONS STORE AS NESTED_TABLE_TINTERVENTIONS
-
-    CONSTRAINT PRIMARY KEY
-    CONSTRAINT  FOREIGN KEY() REFERENCES 
-    CONSTRAINT ck_langue CHECK (langue IN ('français', 'anglais', 'espagnol')),
-
-    */
+;
